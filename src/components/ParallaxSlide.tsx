@@ -94,7 +94,7 @@ export function ParallaxSlide({meta, state, bg, mid, children}: ParallaxSlidePro
         <img
           src={isDark ? './media/logo-white.png' : './media/logo-dark.png'}
           alt="Hydro Industries"
-          className="h-6 w-auto max-w-[120px] object-contain sm:h-8 sm:max-w-[160px] md:h-9"
+          className="h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[260px]"
         />
       </header>
 
