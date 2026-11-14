@@ -1,6 +1,7 @@
 import {ENTITIES, MILESTONES, PERFORMANCE_ROWS, SLIDES} from '../content';
 import {EarthGlobe3D} from './EarthGlobe3D';
 import {ElectroCoagulationSim} from './ElectroCoagulationSim';
+import {CapabilitiesExplorer, IntroSectorExplorer} from './InteractiveIntroCapabilities';
 import {ParallaxSlide, type SlideState} from './ParallaxSlide';
 import {TreatmentProcessDiagram} from './TreatmentProcessDiagram';
 import {WaterCausticsCanvas} from './WaterCausticsCanvas';
@@ -121,6 +122,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
               </p>
             </div>
           </div>
+          <IntroSectorExplorer />
         </div>
       </ParallaxSlide>
 
@@ -140,19 +142,8 @@ export function Slides({currentIdx}: {currentIdx: number}) {
             <br />
             to <em className="font-display font-light italic text-cyan-glow">operation.</em>
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-            {[
-              {n: '01', title: 'Design', body: 'Custom solutions for industrial and drinking water applications.'},
-              {n: '02', title: 'Construct', body: 'Treatment systems built around modular process steps.'},
-              {n: '03', title: 'Install', body: 'Deployment across different industries and geographies.'},
-              {n: '04', title: 'Operate', body: 'Operation of effective water treatment solutions.'},
-            ].map((step) => (
-              <div key={step.n} className="rounded-2xl border border-pure/15 bg-pure/5 p-5 backdrop-blur-sm transition-all duration-300 hover:border-cyan-glow/40 hover:bg-pure/10">
-                <span className="font-mono text-label text-cyan-glow">{step.n}</span>
-                <h3 className="mt-3 text-xl font-light text-pure sm:mt-4 sm:text-2xl">{step.title}</h3>
-                <p className="mt-2 text-body text-pure/80 sm:mt-3">{step.body}</p>
-              </div>
-            ))}
+          <div data-stagger="2">
+            <CapabilitiesExplorer />
           </div>
         </div>
       </ParallaxSlide>
