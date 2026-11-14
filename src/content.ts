@@ -10,6 +10,7 @@ export interface SlideMeta {
 export const DECK_FOOTER = 'HYDRO INDUSTRIES / OCTOBER 2026';
 
 export const SLIDES: SlideMeta[] = [
+  {id: 'intro-film', number: '00', eyebrow: 'HYDRO INDUSTRIES · OPENING', theme: 'dark'},
   {id: 'cover', number: '01', eyebrow: 'COMPANY OVERVIEW', theme: 'dark'},
   {id: 'intro', number: '02', eyebrow: '01 / INTRODUCTION', theme: 'light'},
   {id: 'capabilities', number: '03', eyebrow: '02 / CAPABILITIES', theme: 'cobalt'},
@@ -23,6 +24,7 @@ export const SLIDES: SlideMeta[] = [
   {id: 'beeah', number: '11', eyebrow: 'CASE STUDY / BEE’AH, SHARJAH', theme: 'light'},
   {id: 'desalination', number: '12', eyebrow: '07 / TECHNOLOGY DEVELOPMENT', theme: 'ice'},
   {id: 'capestone', number: '13', eyebrow: 'CASE STUDY / CAPESTONE ORGANIC POULTRY, UK', theme: 'light'},
+  {id: 'thank-you', number: '14', eyebrow: 'HYDRO INDUSTRIES · THANK YOU', theme: 'dark'},
 ];
 
 export const PERFORMANCE_ROWS = [
