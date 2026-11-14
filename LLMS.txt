@@ -1,0 +1,114 @@
+# LLM Integration & Developer Context Guide (`LLMS.txt`)
+## Hydro Industries — Executive Parallax Slide Deck System
+
+This document provides complete architectural context, conventions, state flow, and guidelines for LLMs, AI agents, and developers interacting with or extending this codebase.
+
+---
+
+## 1. Project Synopsis
+
+The project is an executive-tier, discrete-step 3D parallax web presentation system built for **Hydro Industries**. It is deployed for presentations led by the Global CEO and executive leadership team.
+
+### Primary Technologies
+- **Vite 6** (`vite.config.ts`)
+- **React 19** (`src/App.tsx`, `src/main.tsx`)
+- **TypeScript 5.8** (`tsconfig.json` with strict mode, `noEmit`, bundler resolution)
+- **Tailwind CSS v4** (`@tailwindcss/vite` plugin with `@theme` block in `src/index.css`)
+- **Native HTML5 Canvas** (Custom real-time physics and ray-traced spherical projections)
+
+---
+
+## 2. Directory Layout & Roles
+
+```
+.
+├── PDR.md                      # Product Design & Architecture Document
+├── README.md                   # Repository overview, quick-start & deployment
+├── LLMS.txt                    # LLM developer & agent context (this file)
+├── index.html                  # Root template, font preloads & SEO metadata
+├── package.json                # Pinned dependencies & build scripts
+├── tsconfig.json               # TypeScript strict configuration
+├── vite.config.ts              # Vite plugins configuration
+├── public/
+│   └── media/
+│       ├── logo-dark.png       # Transparent vector-crisp dark Hydro logo
+│       ├── logo-white.png      # White monochrome Hydro logo for dark themes
+│       └── slides/
+│           ├── hero-water.png         # High-res caustics water background
+│           ├── impact-abstract.png    # 3D metallic fluid wave background
+│           ├── quito-plant.png        # Quito landfill leachate treatment plant
+│           ├── beeah-plant.png        # BEE'AH Sharjah wastewater reuse plant
+│           ├── desalination-light.png # High-key light refraction background
+│           └── earth-texture.png      # 2048x1024 Blue Marble Earth satellite texture
+└── src/
+    ├── App.tsx                 # Discrete navigation controller & gesture event coordinator
+    ├── content.ts              # Presentation datasets, copy, metadata, and slide definitions
+    ├── index.css               # Tailwind v4 theme, design tokens & stagger animations
+    ├── main.tsx                # StrictMode entrypoint & manual scroll restoration
+    ├── components/
+    │   ├── DeckHud.tsx         # Bottom floating pill controller & slide index drawer
+    │   ├── EarthGlobe3D.tsx    # 3D Ray-traced floating Earth globe canvas
+    │   ├── ElectroCoagulationSim.tsx # Real-time particle physics electro-coagulation canvas
+    │   ├── ParallaxSlide.tsx   # Discrete 3-plane parallax viewport stage container
+    │   ├── Slides.tsx          # All 13 configured presentation slide implementations
+    │   ├── TreatmentProcessDiagram.tsx # Interactive 5-stage SVG treatment architecture
+    │   └── WaterCausticsCanvas.tsx     # Procedural dynamic water caustics overlay
+    └── lib/
+        ├── math.ts             # Interpolation (lerp, clamp, range, ease curves)
+        └── scroll.ts           # Continuous ambient rAF tick subscriber registry
+```
+
+---
+
+## 3. Core Technical Conventions
+
+### 3.1 Discrete Presentation State (Not Free Scroll)
+- In `App.tsx`, `currentIdx` is the single source of truth for the active slide.
+- Navigation transitions are triggered via:
+  1. `goTo(idx: number)`
+  2. Keyboard events: `ArrowRight`, `ArrowLeft`, `ArrowDown`, `ArrowUp`, `Space`, `PageDown`, `PageUp`
+  3. Discrete wheel events: intercepted with `e.preventDefault()` and locked for $650\text{ms}$ per slide transition.
+  4. Touch swipe events: `touchstart` / `touchend` delta tracking with a $45\text{px}$ threshold.
+  5. HUD buttons or slide drawer modal selection.
+
+### 3.2 Slide Lifecycle: `stateOf(idx)`
+Each `ParallaxSlide` receives a `state` prop:
+- `'active'`: The current slide displayed in full view (`z-20`, `opacity-100`, `visible`).
+- `'before'`: A previously visited slide positioned above the viewport (`translate3d(0, -10% to -48px, 0)`, `opacity-0`).
+- `'after'`: A subsequent slide positioned below the viewport (`translate3d(0, 10% to 48px, 0)`, `opacity-0`).
+
+### 3.3 Timing & Delays
+All transitions use the luxury cubic bezier `cubic-bezier(0.16, 1, 0.3, 1)`:
+- **Background Plane**: $1800\text{ms}$ duration
+- **Midground Plane**: $1600\text{ms}$ duration
+- **Foreground Plane**: $1450\text{ms}$ duration
+- **Per-Element Stagger**:
+  - `[data-stagger="1"]`: $200\text{ms}$ delay
+  - `[data-stagger="2"]`: $420\text{ms}$ delay
+  - `[data-stagger="3"]`: $640\text{ms}$ delay
+  - `[data-stagger="4"]`: $860\text{ms}$ delay
+  - `[data-stagger="5"]`: $1080\text{ms}$ delay
+
+---
+
+## 4. How to Extend the Deck
+
+### Adding a New Slide
+1. Open `src/content.ts` and append a new `SlideMeta` entry to `SLIDES`:
+   ```ts
+   { id: 'new-section', number: '14', eyebrow: '08 / NEW HORIZONS', theme: 'dark' }
+   ```
+2. Open `src/components/Slides.tsx` and add a new `ParallaxSlide`:
+   ```tsx
+   <ParallaxSlide
+     meta={SLIDES[13]}
+     state={stateOf(13)}
+     bg={<img src="..." className="size-full object-cover" />}
+   >
+     <div className="max-w-3xl">
+       <h2 data-stagger="1" className="font-sans text-display font-light">New Headline</h2>
+       <p data-stagger="2" className="text-body text-pure/80">Supporting details...</p>
+     </div>
+   </ParallaxSlide>
+   ```
+3. Run `npm run lint` and `npm run build` to verify strict compilation.
