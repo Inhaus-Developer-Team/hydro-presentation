@@ -38,12 +38,9 @@ export function Slides({currentIdx}: {currentIdx: number}) {
             data-stagger="1"
             src="./media/logo-white.png"
             alt="Hydro Industries"
-            className="h-20 w-auto object-contain drop-shadow-[0_0_40px_rgba(56,189,248,0.45)] sm:h-28 md:h-32"
+            className="h-24 w-auto object-contain drop-shadow-[0_0_40px_rgba(56,189,248,0.45)] sm:h-32 md:h-40"
           />
-          <p data-stagger="2" className="mt-8 font-display text-lead font-light italic text-cyan-glow sm:mt-10">
-            Water. Technology. Possibility.
-          </p>
-          <p data-stagger="3" className="mt-4 font-mono text-label tracking-[0.18em] text-pure/60 uppercase">
+          <p data-stagger="2" className="mt-8 font-mono text-label tracking-[0.18em] text-pure/65 uppercase">
             Press → or scroll to begin
           </p>
         </div>
