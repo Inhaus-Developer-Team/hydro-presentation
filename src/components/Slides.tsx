@@ -10,9 +10,48 @@ export function Slides({currentIdx}: {currentIdx: number}) {
     idx === currentIdx ? 'active' : idx < currentIdx ? 'before' : 'after';
   return (
     <>
+      {/* 00 / CINEMATIC OPENING */}
+      <ParallaxSlide
+        meta={SLIDES[0]}
+        state={stateOf(0)}
+        hideHeaderLogo
+        bg={
+          <>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="./media/slides/intro-cinematic.png"
+              aria-hidden="true"
+              className="size-full object-cover object-center scale-105"
+            >
+              <source src="./media/slides/intro-water.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-abyss/90 via-abyss/45 to-abyss/70" />
+          </>
+        }
+        mid={<WaterCausticsCanvas />}
+      >
+        <div className="flex flex-col items-center text-center">
+          <img
+            data-stagger="1"
+            src="./media/logo-white.png"
+            alt="Hydro Industries"
+            className="h-20 w-auto object-contain drop-shadow-[0_0_40px_rgba(56,189,248,0.45)] sm:h-28 md:h-32"
+          />
+          <p data-stagger="2" className="mt-8 font-display text-lead font-light italic text-cyan-glow sm:mt-10">
+            Water. Technology. Possibility.
+          </p>
+          <p data-stagger="3" className="mt-4 font-mono text-label tracking-[0.18em] text-pure/60 uppercase">
+            Press → or scroll to begin
+          </p>
+        </div>
+      </ParallaxSlide>
+
       {/* 01 / COVER */}
       <ParallaxSlide
-        meta={SLIDES[0]} state={stateOf(0)}
+        meta={SLIDES[1]} state={stateOf(1)}
         bg={
           <>
             <img
@@ -52,7 +91,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
 
       {/* 02 / INTRODUCTION */}
       <ParallaxSlide
-        meta={SLIDES[1]} state={stateOf(1)}
+        meta={SLIDES[2]} state={stateOf(2)}
         bg={
           <div className="absolute inset-0 bg-[radial-gradient(55%_45%_at_85%_25%,rgba(20,70,255,0.08),transparent_70%)]" />
         }
@@ -87,7 +126,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
 
       {/* 03 / CAPABILITIES */}
       <ParallaxSlide
-        meta={SLIDES[2]} state={stateOf(2)}
+        meta={SLIDES[3]} state={stateOf(3)}
         bg={
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-cobalt via-abyss to-abyss" />
@@ -120,7 +159,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
 
       {/* 04 / CASE STUDIES INTRO */}
       <ParallaxSlide
-        meta={SLIDES[3]} state={stateOf(3)}
+        meta={SLIDES[4]} state={stateOf(4)}
         bg={
           <>
             <img
@@ -149,7 +188,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 05 / QUITO, ECUADOR */}
-      <ParallaxSlide meta={SLIDES[4]} state={stateOf(4)}>
+      <ParallaxSlide meta={SLIDES[5]} state={stateOf(5)}>
         <div className="grid items-center gap-6 sm:gap-10 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-5">
             <p className="font-mono text-label text-electric uppercase">Municipality of Quito</p>
@@ -185,7 +224,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 06 / FRONGOCH, WALES — WITH INTERACTIVE SIMULATION */}
-      <ParallaxSlide meta={SLIDES[5]} state={stateOf(5)}>
+      <ParallaxSlide meta={SLIDES[6]} state={stateOf(6)}>
         <div className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
           <div className="space-y-6 md:col-span-5">
             <div>
@@ -225,7 +264,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 07 / ROADBRIDGE, SOUTH WALES */}
-      <ParallaxSlide meta={SLIDES[6]} state={stateOf(6)}>
+      <ParallaxSlide meta={SLIDES[7]} state={stateOf(7)}>
         <div className="space-y-6 sm:space-y-10">
           <h2 data-stagger="1" className="font-sans text-display font-light tracking-[-0.03em] text-ink">
             Clear results.
@@ -273,7 +312,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 08 / TREATMENT PERFORMANCE */}
-      <ParallaxSlide meta={SLIDES[7]} state={stateOf(7)}>
+      <ParallaxSlide meta={SLIDES[8]} state={stateOf(8)}>
         <div className="grid items-start gap-6 sm:gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <h2 data-stagger="1" className="font-sans text-display font-light tracking-[-0.03em] text-ink">
@@ -317,7 +356,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 09 / CORPORATE DEVELOPMENT */}
-      <ParallaxSlide meta={SLIDES[8]} state={stateOf(8)}>
+      <ParallaxSlide meta={SLIDES[9]} state={stateOf(9)}>
         <div className="grid items-center gap-6 sm:gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <h2 data-stagger="1" className="font-sans text-display font-light tracking-[-0.03em] text-ink">
@@ -325,27 +364,45 @@ export function Slides({currentIdx}: {currentIdx: number}) {
               <br />
               <em className="font-display font-light italic text-electric">progress.</em>
             </h2>
-            <div className="mt-4 sm:mt-6">
-              <div data-stagger="2"><EarthGlobe3D /></div>
+            <div data-stagger="2" className="mt-4 overflow-hidden rounded-2xl bg-white/75 p-5 shadow-sm ring-1 ring-ink/10 backdrop-blur-md sm:mt-8 sm:p-6">
+              <p className="font-mono text-label text-electric uppercase">Selected milestones / 2010–2026</p>
+              <p className="mt-2 text-body text-ink/75 sm:mt-3">
+                Sixteen years of proprietary electro-coagulation engineering, global deployments, and strategic group expansion.
+              </p>
             </div>
           </div>
-          <div className="divide-y divide-ink/12 border-y border-ink/12 md:col-span-7">
-            {MILESTONES.map((m) => (
-              <div key={m.year} className="group grid grid-cols-[4rem_1fr] gap-3 py-3.5 transition-colors hover:bg-white/40 sm:grid-cols-[5rem_1fr] sm:gap-4 sm:py-4">
-                <span className="font-sans text-xl font-light text-electric transition-transform group-hover:scale-105 sm:text-2xl">{m.year}</span>
-                <div>
-                  <h3 className="text-base font-medium text-ink sm:text-lg">{m.title}</h3>
-                  <p className="mt-0.5 text-xs text-ink/70 sm:text-sm">{m.desc}</p>
+          <div className="relative pl-6 sm:pl-8 md:col-span-7">
+            <div aria-hidden="true" className="absolute top-3 bottom-3 left-2 w-[2px] bg-gradient-to-b from-electric via-cyan-glow to-electric/20 sm:left-3" />
+            <div className="space-y-3 sm:space-y-4">
+              {MILESTONES.map((m, i) => (
+                <div
+                  key={m.year}
+                  data-stagger={String(Math.min(5, i + 1))}
+                  className="group relative rounded-2xl bg-white/75 p-4 shadow-sm ring-1 ring-ink/10 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:ring-electric/30 sm:p-5"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-1/2 -left-[1.35rem] size-3 -translate-y-1/2 rounded-full border-2 border-pure bg-electric shadow-[0_0_10px_rgba(20,70,255,0.55)] transition-transform duration-300 group-hover:scale-125 sm:-left-[1.6rem]"
+                  />
+                  <div className="grid grid-cols-[4.5rem_1fr] items-baseline gap-3 sm:grid-cols-[5.5rem_1fr] sm:gap-4">
+                    <span className="font-sans text-xl font-light text-electric transition-transform duration-300 group-hover:translate-x-0.5 sm:text-2xl">
+                      {m.year}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-medium text-ink sm:text-lg">{m.title}</h3>
+                      <p className="mt-0.5 text-xs text-ink/70 sm:text-sm">{m.desc}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </ParallaxSlide>
 
       {/* 10 / GROUP STRUCTURE */}
       <ParallaxSlide
-        meta={SLIDES[9]} state={stateOf(9)}
+        meta={SLIDES[10]} state={stateOf(10)}
         bg={
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-cobalt/80 via-abyss to-abyss" />
@@ -353,7 +410,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
           </>
         }
       >
-        <div className="grid items-start gap-8 sm:gap-12 md:grid-cols-12">
+        <div className="grid items-center gap-8 sm:gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <p className="font-mono text-label text-cyan-glow uppercase">United Kingdom</p>
             <h2 data-stagger="1" className="mt-2 font-sans text-display font-light tracking-[-0.03em] text-pure sm:mt-3">
@@ -363,37 +420,28 @@ export function Slides({currentIdx}: {currentIdx: number}) {
               <br />
               <em className="font-display font-light italic text-cyan-glow">presence.</em>
             </h2>
-            <div className="mt-6 rounded-2xl border border-pure/15 bg-pure/5 p-5 backdrop-blur-md">
-              <p className="text-base font-light text-pure sm:text-lg">
-                Hydro Industries Limited
-                <br />
-                <span className="text-pure/70 text-sm">United Kingdom Headquarters</span>
-              </p>
-              <p className="mt-3 text-xs text-pure/70">
-                Wholly owned entities support the group’s international presence, alongside a joint venture office in Bahrain.
-              </p>
-            </div>
-          </div>
-          <div className="md:col-span-7">
-            <p className="font-mono text-label text-cyan-glow uppercase">Wholly owned subsidiaries / 100%</p>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <p data-stagger="2" className="mt-5 font-mono text-label text-cyan-glow uppercase">Wholly owned subsidiaries / 100%</p>
+            <div data-stagger="3" className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-1">
               {ENTITIES.map((e) => (
-                <div key={e.name} className="flex items-center justify-between rounded-xl border border-pure/10 bg-pure/5 px-4 py-3 backdrop-blur-sm transition-colors hover:border-cyan-glow/30 hover:bg-pure/10">
-                  <span className="text-sm font-light text-pure sm:text-base">{e.name}</span>
+                <div key={e.name} className="flex items-center justify-between rounded-xl border border-pure/10 bg-pure/5 px-3.5 py-2 backdrop-blur-sm transition-colors hover:border-cyan-glow/30 hover:bg-pure/10">
+                  <span className="text-sm font-light text-pure">{e.name}</span>
                   {e.country && <span className="rounded-full bg-pure/10 px-2 py-0.5 font-mono text-[0.625rem] text-cyan-glow">{e.country}</span>}
                 </div>
               ))}
             </div>
-            <div className="mt-5 rounded-xl border border-cyan-glow/20 bg-electric/10 p-4">
+            <div data-stagger="4" className="mt-4 rounded-xl border border-cyan-glow/20 bg-electric/10 px-4 py-3">
               <p className="font-mono text-label text-cyan-glow uppercase">Joint venture office</p>
-              <p className="mt-1 text-lg font-light text-pure sm:text-xl">Bahrain Regional Hub</p>
+              <p className="mt-0.5 text-base font-light text-pure">Bahrain Regional Hub</p>
             </div>
+          </div>
+          <div data-stagger="2" className="md:col-span-7">
+            <EarthGlobe3D />
           </div>
         </div>
       </ParallaxSlide>
 
       {/* 11 / BEE'AH, SHARJAH */}
-      <ParallaxSlide meta={SLIDES[10]} state={stateOf(10)}>
+      <ParallaxSlide meta={SLIDES[11]} state={stateOf(11)}>
         <div className="grid items-center gap-6 sm:gap-10 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-5">
             <p className="font-mono text-label text-electric uppercase">Wastewater Treatment / UAE</p>
@@ -434,7 +482,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
 
       {/* 12 / TECHNOLOGY DEVELOPMENT — DESALINATION */}
       <ParallaxSlide
-        meta={SLIDES[11]} state={stateOf(11)}
+        meta={SLIDES[12]} state={stateOf(12)}
         bg={
           <>
             <img
@@ -487,7 +535,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
       </ParallaxSlide>
 
       {/* 13 / CAPESTONE ORGANIC POULTRY — WITH PROCESS DIAGRAM */}
-      <ParallaxSlide meta={SLIDES[12]} state={stateOf(12)}>
+      <ParallaxSlide meta={SLIDES[13]} state={stateOf(13)}>
         <div className="space-y-8 sm:space-y-10">
           <div className="grid items-center gap-6 sm:gap-10 md:grid-cols-12">
             <div className="md:col-span-6">
@@ -515,6 +563,45 @@ export function Slides({currentIdx}: {currentIdx: number}) {
 
           {/* Interactive Treatment Process Flow Diagram */}
           <div data-stagger="3"><TreatmentProcessDiagram /></div>
+        </div>
+      </ParallaxSlide>
+
+      {/* 14 / CINEMATIC THANK YOU */}
+      <ParallaxSlide
+        meta={SLIDES[14]}
+        state={stateOf(14)}
+        hideHeaderLogo
+        bg={
+          <>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="./media/slides/outro-cinematic.png"
+              aria-hidden="true"
+              className="size-full object-cover object-center scale-105"
+            >
+              <source src="./media/slides/outro-water.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-abyss/95 via-abyss/50 to-abyss/75" />
+          </>
+        }
+        mid={<WaterCausticsCanvas />}
+      >
+        <div className="flex flex-col items-center text-center">
+          <img
+            data-stagger="1"
+            src="./media/logo-white.png"
+            alt="Hydro Industries"
+            className="h-16 w-auto object-contain drop-shadow-[0_0_36px_rgba(56,189,248,0.4)] sm:h-24 md:h-28"
+          />
+          <h2 data-stagger="2" className="mt-8 font-sans text-hero font-light tracking-[-0.03em] text-pure">
+            Thank <em className="font-display font-light italic text-cyan-glow">you.</em>
+          </h2>
+          <p data-stagger="3" className="mt-6 font-mono text-label tracking-[0.16em] text-pure/70 uppercase">
+            Hydro Industries Limited · United Kingdom · October 2026
+          </p>
         </div>
       </ParallaxSlide>
     </>

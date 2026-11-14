@@ -6,6 +6,8 @@ export type SlideState = 'active' | 'before' | 'after';
 interface ParallaxSlideProps {
   meta: SlideMeta;
   state: SlideState;
+  /** Hide the top-right header logo (e.g. when the logo is centered as protagonist). */
+  hideHeaderLogo?: boolean;
   /** Background layer (slowest parallax). */
   bg?: ReactNode;
   /** Midground layer (medium parallax). */
@@ -21,7 +23,7 @@ const THEME_BG: Record<SlideMeta['theme'], string> = {
   ice: 'bg-ice text-ink',
 };
 
-export function ParallaxSlide({meta, state, bg, mid, children}: ParallaxSlideProps) {
+export function ParallaxSlide({meta, state, hideHeaderLogo, bg, mid, children}: ParallaxSlideProps) {
   const isDark = meta.theme === 'dark' || meta.theme === 'cobalt';
   const isActive = state === 'active';
 
@@ -91,11 +93,13 @@ export function ParallaxSlide({meta, state, bg, mid, children}: ParallaxSlidePro
         <span className={`font-mono text-[0.625rem] tracking-[0.14em] uppercase sm:text-label ${isDark ? 'text-pure/75' : 'text-ink/75'}`}>
           {meta.eyebrow}
         </span>
-        <img
-          src={isDark ? './media/logo-white.png' : './media/logo-dark.png'}
-          alt="Hydro Industries"
-          className="h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[260px]"
-        />
+        {!hideHeaderLogo && (
+          <img
+            src={isDark ? './media/logo-white.png' : './media/logo-dark.png'}
+            alt="Hydro Industries"
+            className="h-10 w-auto max-w-[180px] object-contain sm:h-12 sm:max-w-[220px] md:h-14 md:max-w-[260px]"
+          />
+        )}
       </header>
 
       {/* Foreground Content (fastest, 1450ms + stagger on intro) */}
