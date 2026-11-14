@@ -16,7 +16,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
         bg={
           <>
             <img
-              src="/media/slides/hero-water.png"
+              src="./media/slides/hero-water.png"
               alt=""
               aria-hidden="true"
               className="size-full object-cover object-center scale-105"
@@ -124,7 +124,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
         bg={
           <>
             <img
-              src="/media/slides/impact-abstract.png"
+              src="./media/slides/impact-abstract.png"
               alt=""
               aria-hidden="true"
               className="size-full object-cover object-center scale-105"
@@ -172,7 +172,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
           <div className="md:col-span-7">
             <div className="group relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-ink/10 transition-transform duration-500 hover:scale-[1.01]">
               <img
-                src="/media/slides/quito-plant.png"
+                src="./media/slides/quito-plant.png"
                 alt="Quito leachate treatment plant aerial view"
                 className="aspect-[16/10] w-full object-cover sm:aspect-[4/3]"
               />
@@ -419,7 +419,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
           <div className="md:col-span-7">
             <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-ink/10">
               <img
-                src="/media/slides/beeah-plant.png"
+                src="./media/slides/beeah-plant.png"
                 alt="BEE'AH Sharjah wastewater treatment plant"
                 className="aspect-[16/10] w-full object-cover"
               />
@@ -438,7 +438,7 @@ export function Slides({currentIdx}: {currentIdx: number}) {
         bg={
           <>
             <img
-              src="/media/slides/desalination-light.png"
+              src="./media/slides/desalination-light.png"
               alt=""
               aria-hidden="true"
               className="size-full object-cover object-center opacity-85"

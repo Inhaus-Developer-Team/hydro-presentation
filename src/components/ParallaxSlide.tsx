@@ -92,7 +92,7 @@ export function ParallaxSlide({meta, state, bg, mid, children}: ParallaxSlidePro
           {meta.eyebrow}
         </span>
         <img
-          src={isDark ? '/media/logo-white.png' : '/media/logo-dark.png'}
+          src={isDark ? './media/logo-white.png' : './media/logo-dark.png'}
           alt="Hydro Industries"
           className="h-6 w-auto max-w-[120px] object-contain sm:h-8 sm:max-w-[160px] md:h-9"
         />

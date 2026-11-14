@@ -54,7 +54,7 @@ export function EarthGlobe3D() {
 
     // Load photorealistic equirectangular Earth texture at high resolution
     const img = new Image();
-    img.src = '/media/slides/earth-texture.png';
+    img.src = './media/slides/earth-texture.png';
     img.onload = () => {
       const off = document.createElement('canvas');
       texW = 2048;
