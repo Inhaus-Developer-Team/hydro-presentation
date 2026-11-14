@@ -32,7 +32,6 @@ export function Slides({currentIdx}: {currentIdx: number}) {
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/90 via-abyss/45 to-abyss/70" />
           </>
         }
-        mid={<WaterCausticsCanvas />}
       >
         <div className="flex flex-col items-center text-center">
           <img
@@ -578,7 +577,6 @@ export function Slides({currentIdx}: {currentIdx: number}) {
             <div className="absolute inset-0 bg-gradient-to-t from-abyss/95 via-abyss/50 to-abyss/75" />
           </>
         }
-        mid={<WaterCausticsCanvas />}
       >
         <div className="flex flex-col items-center text-center">
           <img
