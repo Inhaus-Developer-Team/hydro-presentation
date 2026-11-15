@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
+import {CustomCursor} from './components/CustomCursor';
 import {DeckHud} from './components/DeckHud';
 import {Slides} from './components/Slides';
 import {SLIDES} from './content';
@@ -81,6 +82,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       <DeckHud currentIdx={currentIdx} goTo={goTo} />
       <main className="relative h-screen-s w-full overflow-hidden bg-abyss">
         <Slides currentIdx={currentIdx} />

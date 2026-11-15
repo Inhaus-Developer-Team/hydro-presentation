@@ -68,6 +68,11 @@ html.lenis body {
     outline-offset: 3px;
     border-radius: 999px;
   }
+  @media (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
