@@ -246,7 +246,7 @@ export function EarthGlobe3D() {
         dragRef.current.active = false;
       }}
       title="Drag to rotate globe"
-      className="relative h-[22rem] w-full cursor-grab active:cursor-grabbing sm:h-[28rem]"
+      className="relative h-[28rem] w-full cursor-grab active:cursor-grabbing sm:h-[36rem] lg:h-[40rem]"
     >
       <canvas ref={canvasRef} className="size-full" />
     </div>
