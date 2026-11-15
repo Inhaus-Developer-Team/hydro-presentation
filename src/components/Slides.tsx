@@ -23,7 +23,6 @@ export function Slides({currentIdx}: {currentIdx: number}) {
               loop
               muted
               playsInline
-              poster="./media/slides/intro-cinematic.png"
               aria-hidden="true"
               className="size-full object-cover object-center scale-105"
             >
