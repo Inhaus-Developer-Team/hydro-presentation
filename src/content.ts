@@ -45,10 +45,10 @@ export const MILESTONES = [
 ];
 
 export const ENTITIES = [
+  {name: 'Hydro Environmental Limited', country: ''},
   {name: 'Hydro Ecuador', country: 'Ecuador'},
   {name: 'Hydro Colombia', country: 'Colombia'},
   {name: 'Hydro Services Morocco', country: 'Morocco'},
   {name: 'Hydro Saudi Arabia', country: 'Saudi Arabia'},
   {name: 'Hydro Egypt', country: 'Egypt'},
-  {name: 'Hydro Environmental Limited', country: ''},
 ];
