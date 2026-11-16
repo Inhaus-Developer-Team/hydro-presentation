@@ -10,7 +10,7 @@ export interface SlideMeta {
 export const DECK_FOOTER = 'HYDRO INDUSTRIES / OCTOBER 2026';
 
 export const SLIDES: SlideMeta[] = [
-  {id: 'intro-film', number: '00', eyebrow: 'HYDRO INDUSTRIES · OPENING', theme: 'dark'},
+  {id: 'intro-film', number: '00', eyebrow: '', theme: 'dark'},
   {id: 'cover', number: '01', eyebrow: 'COMPANY OVERVIEW', theme: 'dark'},
   {id: 'intro', number: '02', eyebrow: '01 / INTRODUCTION', theme: 'light'},
   {id: 'capabilities', number: '03', eyebrow: '02 / CAPABILITIES', theme: 'cobalt'},
